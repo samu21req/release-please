@@ -3,17 +3,22 @@ on:
     branches:
       - main
 
-  permissions:
-    contents: write
-    pull-requests: write
+permissions:
+  contents: write
+  pull-requests: write
 
-  name: release-please
+name: release-please
 
-  jobs:
-    release-please:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: google-github-actions/release-please-action@v3
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
         with:
-          release-type: node
+          release-type: simple
           package-name: release-please-action
+          include-v-in-tag: false
+          include-component-in-tag: false
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          prerelease: false
